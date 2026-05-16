@@ -1,0 +1,14 @@
+frontend
+backend
+qr-service
+
+*-progress.md
+*-notes.md
+
+.env
+**/node_modules
+**/dist
+**/.vite
+coverage
+*.log
+.DS_Store
