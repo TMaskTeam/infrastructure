@@ -1,17 +1,4 @@
-# Как открыть сайт
-
-## Запуск
-
-Из корня проекта:
-
-```bash
-bun install
-bun run dev -- --host 127.0.0.1
-```
-
-После запуска сайт доступен по адресу:
-
-- `http://127.0.0.1:5173/`
+# Как запустить
 
 ## Запуск через Docker Compose
 
@@ -33,15 +20,15 @@ FRONTEND_PORT=3000
 
 ## Основные страницы
 
-- Главная: `http://127.0.0.1:5173/`
-- Вход клиента: `http://127.0.0.1:5173/auth/client/login`
-- Вход партнера: `http://127.0.0.1:5173/auth/business/login`
-- Вход кассира: `http://127.0.0.1:5173/auth/employee/login`
-- Вход администратора: `http://127.0.0.1:5173/auth/admin/login`
-- Кабинет клиента: `http://127.0.0.1:5173/client`
-- Кабинет партнера: `http://127.0.0.1:5173/partner`
-- Рабочее место кассира: `http://127.0.0.1:5173/cashier`
-- Админ-панель: `http://127.0.0.1:5173/admin`
+- Главная: `http://localhost:5173/`
+- Вход клиента: `http://localhost:5173/auth/client/login`
+- Вход партнера: `http://localhost:5173/auth/business/login`
+- Вход кассира: `http://localhost:5173/auth/employee/login`
+- Вход администратора: `http://localhost:5173/auth/admin/login`
+- Кабинет клиента: `http://localhost:5173/client`
+- Кабинет партнера: `http://localhost:5173/partner`
+- Рабочее место кассира: `http://localhost:5173/cashier`
+- Админ-панель: `http://localhost:5173/admin`
 
 При docker-запуске используйте тот же путь на `http://localhost:3000`.
 
