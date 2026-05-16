@@ -8,7 +8,7 @@ services:
       FRONTEND_INTERNAL_PORT: ${FRONTEND_INTERNAL_PORT}
       QR_SERVICE_PORT: ${QR_SERVICE_PORT}
     volumes:
-      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./nginx/default.nginx:/etc/nginx/templates/default.conf.template:ro
     depends_on:
       frontend:
         condition: service_started
