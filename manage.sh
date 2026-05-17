@@ -10,6 +10,7 @@ show_help() {
   echo
   echo "Commands:"
   echo "  up         Start all services"
+  echo "  setup      Setup project cloning all repositories"
   echo "  down       Stop all services"
   echo "  restart    Restart all services"
   echo "  rebuild    Rebuild and start containers"
@@ -17,6 +18,16 @@ show_help() {
   echo "  clean      Remove containers, networks and volumes"
   echo "  ps         Show running containers"
   echo "  help       Show this help message"
+}
+
+setup() {
+	echo "Setuping ${PROJECT_NAME}..."
+	echo ""
+	echo "Cloning repos"
+
+	git clone -b main https://github.com/TMaskTeam/frontend.git
+	git clone -b main https://github.com/TMaskTeam/backend.git
+	git clone -b main https://github.com/TMaskTeam/qr-service.git
 }
 
 run_with_spinner() {
@@ -99,6 +110,9 @@ case "$1" in
     ;;
   down)
     down
+    ;;
+	setup)
+    setup
     ;;
   restart)
     restart
