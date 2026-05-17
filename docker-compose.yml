@@ -1,14 +1,16 @@
 services:
   nginx:
-    image: nginx:1.27-alpine
+    image: nginx:1.27
     container_name: loyalty-nginx
     ports:
       - '${FRONTEND_PORT}:80'
+      - '443:443'
     environment:
       FRONTEND_INTERNAL_PORT: ${FRONTEND_INTERNAL_PORT}
       QR_SERVICE_PORT: ${QR_SERVICE_PORT}
     volumes:
       - ./nginx/default.nginx:/etc/nginx/templates/default.conf.template:ro
+    entrypoint: sh -c "mkdir -p /etc/nginx/ssl && openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem -subj '/CN=localhost' 2>/dev/null && /docker-entrypoint.sh nginx -g 'daemon off;'"
     depends_on:
       frontend:
         condition: service_started
@@ -20,6 +22,7 @@ services:
       context: ./frontend
       args:
         VITE_QR_API_URL: ${VITE_QR_API_URL}
+        VITE_DEV: ${VITE_DEV}
     container_name: loyalty-frontend
     expose:
       - '${FRONTEND_INTERNAL_PORT}'
@@ -107,7 +110,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - ./src/api/public:/app/src/api/public
+      - ./backend/src/api/public:/app/src/api/public
 
 volumes:
   postgres_data:
