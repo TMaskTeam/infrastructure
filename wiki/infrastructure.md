@@ -25,7 +25,7 @@ Compose поднимает:
 
 Файл `.env`:
 
-```env
+```bash
 VITE_DEV=true
 
 FRONTEND_PORT=80
