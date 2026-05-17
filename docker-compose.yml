@@ -37,6 +37,11 @@ services:
       QR_SERVICE_PORT: ${QR_SERVICE_PORT}
       REDIS_URL: ${REDIS_URL}
       QR_TOKEN_MAX_ATTEMPTS: ${QR_TOKEN_MAX_ATTEMPTS}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DBNAME: ${DATABASE_DBNAME}
     expose:
       - '${QR_SERVICE_PORT}'
     healthcheck:
@@ -50,6 +55,8 @@ services:
       retries: 10
     depends_on:
       redis:
+        condition: service_healthy
+      db:
         condition: service_healthy
 
   redis:
@@ -73,6 +80,8 @@ services:
     image: postgres:14.21-alpine
     shm_size: 128mb
     restart: always
+    ports:
+      - '5432:5432'
     environment:
       - POSTGRES_USER=${DATABASE_USER}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
