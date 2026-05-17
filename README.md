@@ -1,5 +1,11 @@
 ## Документация
 
+**ВАЖНО** Перед началом склонируйте этот репозиторий
+
+```bash
+git clone https://github.com/TMaskTeam/infrastructure.git
+```
+
 - [Инфраструктура](./wiki/infrastructure.md)
 - [Как запустить](./wiki/how-to-run.md)
 
